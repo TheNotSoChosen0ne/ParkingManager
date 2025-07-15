@@ -60,6 +60,14 @@ public class Parking
         }
     }
 
+    public void ParkCar()
+    {
+        if (this.availableSlot > 0)
+            this.availableSlot--;
+        else
+            Console.WriteLine("No parking-spots left!");
+    }
+
     public int GetId()
     {
         return this._id;

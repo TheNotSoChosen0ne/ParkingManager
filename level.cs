@@ -13,4 +13,14 @@ class Levels
         this.totalSlot = nbrSlot;
         this.availableSlot = nbrSlot;
     }
+
+    public bool ParkVehicule()
+    {
+        if (availableSlot >= totalSlot) {
+            Console.WriteLine("No Parking slot available!");
+            return false;
+        }
+        availableSlot--;
+        return true;
+    }
 }

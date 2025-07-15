@@ -68,6 +68,14 @@ public class Parking
             Console.WriteLine("No parking-spots left!");
     }
 
+    public void CarLeaves()
+    {
+        if (this.availableSlot == this.totalSlot)
+            Console.WriteLine("No car left in the parking!");
+        else
+            this.availableSlot++;
+    }
+
     public int GetId()
     {
         return this._id;

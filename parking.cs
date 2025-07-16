@@ -5,6 +5,8 @@ public class Parking
     private int _id;
     public int totalSlot { get; protected set; }
     public int availableSlot { get; protected set; }
+    public int totalLevels { get; protected set; }
+    public List<Level> levels { get; protected set; }
 
     public Parking(int nbrSlot = 100)
     {

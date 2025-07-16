@@ -6,7 +6,7 @@ class Level
     public int totalSlot { get; private set; }
     public int availableSlot { get; private set; }
 
-    public Levels(int level, int nbrSlot = 100)
+    public Level(int level, int nbrSlot = 100)
     {
         this._id = 0;
         this.level = level;

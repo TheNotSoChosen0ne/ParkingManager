@@ -1,12 +1,12 @@
 
-class Level
+internal class Level
 {
     private int _id;
-    public int level { get; private set; }
-    public int totalSlot { get; private set; }
-    public int availableSlot { get; private set; }
+    internal int level { get; private set; }
+    internal int totalSlot { get; private set; }
+    internal int availableSlot { get; private set; }
 
-    public Level(int level, int nbrSlot = 100)
+    internal Level(int level, int nbrSlot = 100)
     {
         this._id = 0;
         this.level = level;
@@ -14,10 +14,10 @@ class Level
         this.availableSlot = nbrSlot;
     }
 
-    public bool ExitVehicule()
+    internal bool ExitVehicule()
     {
         if (availableSlot >= totalSlot) {
-            Console.WriteLine("No Vehicule left in level" +
+            Console.WriteLine("No Vehicule left in level " +
             Convert.ToString(level) + "!");
             return false;
         }
@@ -25,10 +25,10 @@ class Level
         return true;
     }
 
-    public bool ParkVehicule()
+    internal bool ParkVehicule()
     {
         if (availableSlot <= 0) {
-            Console.WriteLine("No Parking slot available in level" +
+            Console.WriteLine("No Parking slot available in level " +
             Convert.ToString(level) + "!");
             return false;
         }
@@ -57,24 +57,29 @@ class Level
         }
     }
 
-    public void DisplayLevel()
+    internal void DisplayLevel()
     {
-        float Sqrt = (float)System.Math.Sqrt(totalSlot);
-        int RowSize = (int)Sqrt;
-        int Spot = 0;
+        float sqrt = (float)System.Math.Sqrt(totalSlot);
+        int rowSize = (int)sqrt;
+        int spot = 0;
 
-        if (RowSize < Sqrt)
-            RowSize++;
-        for (int i = 0; i < RowSize; i++) {
-            if (i * RowSize < totalSlot)
+        if (rowSize < sqrt)
+            rowSize++;
+        for (int i = 0; i < rowSize; i++) {
+            if (i * rowSize < totalSlot)
                 Console.Write("|");
-            for (int j = 0; j < RowSize; j++)
-                Spot = DisplaySpot(j, Spot);
-            if (i * RowSize < totalSlot)
+            for (int j = 0; j < rowSize; j++)
+                spot = DisplaySpot(spot);
+            if (i * rowSize < totalSlot)
                 Console.WriteLine();
-            DisplayCurb(RowSize, i);
-            if (i * RowSize < totalSlot)
+            DisplayCurb(rowSize, i);
+            if (i * rowSize < totalSlot)
                 Console.WriteLine();
         }
+    }
+
+    internal int GetId()
+    {
+        return _id;
     }
 }

@@ -3,10 +3,10 @@
 public class Parking
 {
     private int _id;
-    public int totalSlot { get; protected set; }
-    public int availableSlot { get; protected set; }
-    public int totalLevels { get; protected set; }
-    public List<Level> levels { get; protected set; }
+    internal int totalSlot { get; private set; }
+    internal int availableSlot { get; private set; }
+    internal int totalLevels { get; private set; }
+    internal List<Level> levels { get; private set; }
 
     public Parking(int nbrSlot = 100)
     {
@@ -20,7 +20,7 @@ public class Parking
         this._id = 0;
         this.totalLevels = 0;
         this.levels = new List<Level>();
-        this.levels.Add(new Level(0, nbrSlot));
+        this.AddLevel(nbrSlot);
     }
 
     public void AddLevel(int nbrSlot = 100)
@@ -31,65 +31,33 @@ public class Parking
         this.totalLevels++;
     }
 
-    protected int DisplaySpot(int spot)
-    {
-        if (spot < totalSlot - availableSlot) {
-            spot++;
-            Console.Write("▮|");
-        } else if (spot < totalSlot) {
-            spot++;
-            Console.Write(" |");
-        }
-        return spot;
-    }
-
-    protected void DisplayCurb(int RowSize, int RowIdx)
-    {
-        for (int idx = 0; idx < RowSize && RowIdx * RowSize + idx < totalSlot; idx++) {
-            if (idx == 0)
-                Console.Write("—");
-            Console.Write("——");
-        }
-    }
-
     public void DisplayParking()
     {
-        float sqrt = (float)System.Math.Sqrt(totalSlot);
-        int rowSize = (int)sqrt;
-        int spot = 0;
+        foreach (Level lvl in levels)
+            lvl.DisplayLevel();
+    }
 
-        if (rowSize < sqrt)
-            rowSize++;
-        for (int i = 0; i < rowSize; i++) {
-            if (i * rowSize < totalSlot)
-                Console.Write("|");
-            for (int j = 0; j < rowSize; j++)
-                spot = DisplaySpot(spot);
-            if (i * rowSize < totalSlot)
-                Console.WriteLine();
-            DisplayCurb(rowSize, i);
-            if (i * rowSize < totalSlot)
-                Console.WriteLine();
+    public void ParkCar(int level)
+    {
+        if (level < 0 || level >= totalLevels) {
+            Console.WriteLine("Level does not exist!");
+            return ;
         }
-    }
-
-    public void ParkCar()
-    {
-        if (this.availableSlot > 0)
+        if (levels[level].ParkVehicule())
             this.availableSlot--;
-        else
-            Console.WriteLine("No parking-spots left!");
     }
 
-    public void CarLeaves()
+    public void ExitCar(int level)
     {
-        if (this.availableSlot == this.totalSlot)
-            Console.WriteLine("No car left in the parking!");
-        else
+        if (level < 0 || level >= totalLevels) {
+            Console.WriteLine("Level does not exist!");
+            return;
+        }
+        if (levels[level].ExitVehicule())
             this.availableSlot++;
     }
 
-    public int GetId()
+    internal int GetId()
     {
         return _id;
     }

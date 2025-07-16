@@ -18,7 +18,9 @@ public class Parking
         this.totalSlot = nbrSlot;
         this.availableSlot = nbrSlot;
         this._id = 0;
+        this.totalLevels = 0;
         this.levels = new List<Level>();
+        this.levels.Add(new Level(0));
     }
 
     public void AddLevel(int nbrSlot = 100)

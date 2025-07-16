@@ -20,7 +20,7 @@ public class Parking
         this._id = 0;
         this.totalLevels = 0;
         this.levels = new List<Level>();
-        this.levels.Add(new Level(0));
+        this.levels.Add(new Level(0, nbrSlot));
     }
 
     public void AddLevel(int nbrSlot = 100)

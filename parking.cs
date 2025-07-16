@@ -26,6 +26,7 @@ public class Parking
         Level newLevel = new Level(totalLevels, nbrSlot);
 
         this.levels.Add(newLevel);
+        this.totalLevels++;
     }
 
     protected int DisplaySpot(int spot)

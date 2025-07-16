@@ -14,6 +14,17 @@ class Level
         this.availableSlot = nbrSlot;
     }
 
+    public bool ExitVehicule()
+    {
+        if (availableSlot >= totalSlot) {
+            Console.WriteLine("No Vehicule left in level" +
+            Convert.ToString(level) + "!");
+            return false;
+        }
+        availableSlot++;
+        return true;
+    }
+
     public bool ParkVehicule()
     {
         if (availableSlot >= totalSlot) {

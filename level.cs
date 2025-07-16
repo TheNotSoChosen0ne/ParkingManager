@@ -1,5 +1,5 @@
 
-class Levels
+class Level
 {
     private int _id;
     public int level { get; private set; }

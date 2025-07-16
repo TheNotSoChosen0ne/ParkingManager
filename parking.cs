@@ -18,6 +18,7 @@ public class Parking
         this.totalSlot = nbrSlot;
         this.availableSlot = nbrSlot;
         this._id = 0;
+        this.levels = new List<Level>();
     }
 
     protected int DisplaySpot(int spot)

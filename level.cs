@@ -24,6 +24,18 @@ class Levels
         return true;
     }
 
+    protected int DisplaySpot(int spot)
+    {
+        if (spot < this.totalSlot - this.availableSlot) {
+            spot++;
+            Console.Write("▮|");
+        } else if (spot < this.totalSlot) {
+            spot++;
+            Console.Write(" |");
+        }
+        return spot;
+    }
+
     protected void DisplayCurb(int RowSize, int RowIdx)
     {
         for (int idx = 0; idx < RowSize && RowIdx * RowSize + idx < this.totalSlot; idx++) {

@@ -33,10 +33,10 @@ public class Parking
 
     protected int DisplaySpot(int spot)
     {
-        if (spot < this.totalSlot - this.availableSlot) {
+        if (spot < totalSlot - availableSlot) {
             spot++;
             Console.Write("▮|");
-        } else if (spot < this.totalSlot) {
+        } else if (spot < totalSlot) {
             spot++;
             Console.Write(" |");
         }
@@ -45,7 +45,7 @@ public class Parking
 
     protected void DisplayCurb(int RowSize, int RowIdx)
     {
-        for (int idx = 0; idx < RowSize && RowIdx * RowSize + idx < this.totalSlot; idx++) {
+        for (int idx = 0; idx < RowSize && RowIdx * RowSize + idx < totalSlot; idx++) {
             if (idx == 0)
                 Console.Write("—");
             Console.Write("——");
@@ -54,21 +54,21 @@ public class Parking
 
     public void DisplayParking()
     {
-        float sqrt = (float)System.Math.Sqrt(this.totalSlot);
+        float sqrt = (float)System.Math.Sqrt(totalSlot);
         int rowSize = (int)sqrt;
         int spot = 0;
 
         if (rowSize < sqrt)
             rowSize++;
         for (int i = 0; i < rowSize; i++) {
-            if (i * rowSize < this.totalSlot)
+            if (i * rowSize < totalSlot)
                 Console.Write("|");
             for (int j = 0; j < rowSize; j++)
                 spot = DisplaySpot(spot);
-            if (i * rowSize < this.totalSlot)
+            if (i * rowSize < totalSlot)
                 Console.WriteLine();
             DisplayCurb(rowSize, i);
-            if (i * rowSize < this.totalSlot)
+            if (i * rowSize < totalSlot)
                 Console.WriteLine();
         }
     }
@@ -91,6 +91,6 @@ public class Parking
 
     public int GetId()
     {
-        return this._id;
+        return _id;
     }
 }

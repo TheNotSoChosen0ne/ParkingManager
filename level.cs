@@ -26,10 +26,10 @@ class Levels
 
     protected int DisplaySpot(int spot)
     {
-        if (spot < this.totalSlot - this.availableSlot) {
+        if (spot < totalSlot - availableSlot) {
             spot++;
             Console.Write("▮|");
-        } else if (spot < this.totalSlot) {
+        } else if (spot < totalSlot) {
             spot++;
             Console.Write(" |");
         }
@@ -38,7 +38,7 @@ class Levels
 
     protected void DisplayCurb(int RowSize, int RowIdx)
     {
-        for (int idx = 0; idx < RowSize && RowIdx * RowSize + idx < this.totalSlot; idx++) {
+        for (int idx = 0; idx < RowSize && RowIdx * RowSize + idx < totalSlot; idx++) {
             if (idx == 0)
                 Console.Write("—");
             Console.Write("——");
@@ -47,21 +47,21 @@ class Levels
 
     public void DisplayLevel()
     {
-        float Sqrt = (float)System.Math.Sqrt(this.totalSlot);
+        float Sqrt = (float)System.Math.Sqrt(totalSlot);
         int RowSize = (int)Sqrt;
         int Spot = 0;
 
         if (RowSize < Sqrt)
             RowSize++;
         for (int i = 0; i < RowSize; i++) {
-            if (i * RowSize < this.totalSlot)
+            if (i * RowSize < totalSlot)
                 Console.Write("|");
             for (int j = 0; j < RowSize; j++)
                 Spot = DisplaySpot(j, Spot);
-            if (i * RowSize < this.totalSlot)
+            if (i * RowSize < totalSlot)
                 Console.WriteLine();
             DisplayCurb(RowSize, i);
-            if (i * RowSize < this.totalSlot)
+            if (i * RowSize < totalSlot)
                 Console.WriteLine();
         }
     }

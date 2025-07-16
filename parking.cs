@@ -21,6 +21,13 @@ public class Parking
         this.levels = new List<Level>();
     }
 
+    public void AddLevel(int nbrSlot = 100)
+    {
+        Level newLevel = new Level(totalLevels, nbrSlot);
+
+        this.levels.Add(newLevel);
+    }
+
     protected int DisplaySpot(int spot)
     {
         if (spot < this.totalSlot - this.availableSlot) {

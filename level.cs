@@ -23,4 +23,34 @@ class Levels
         availableSlot--;
         return true;
     }
+
+    protected void DisplayCurb(int RowSize, int RowIdx)
+    {
+        for (int idx = 0; idx < RowSize && RowIdx * RowSize + idx < this.totalSlot; idx++) {
+            if (idx == 0)
+                Console.Write("—");
+            Console.Write("——");
+        }
+    }
+
+    public void DisplayLevel()
+    {
+        float Sqrt = (float)System.Math.Sqrt(this.totalSlot);
+        int RowSize = (int)Sqrt;
+        int Spot = 0;
+
+        if (RowSize < Sqrt)
+            RowSize++;
+        for (int i = 0; i < RowSize; i++) {
+            if (i * RowSize < this.totalSlot)
+                Console.Write("|");
+            for (int j = 0; j < RowSize; j++)
+                Spot = DisplaySpot(j, Spot);
+            if (i * RowSize < this.totalSlot)
+                Console.WriteLine();
+            DisplayCurb(RowSize, i);
+            if (i * RowSize < this.totalSlot)
+                Console.WriteLine();
+        }
+    }
 }

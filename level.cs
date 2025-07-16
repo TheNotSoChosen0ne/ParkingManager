@@ -27,7 +27,7 @@ class Level
 
     public bool ParkVehicule()
     {
-        if (availableSlot >= totalSlot) {
+        if (availableSlot <= 0) {
             Console.WriteLine("No Parking slot available in level" +
             Convert.ToString(level) + "!");
             return false;
